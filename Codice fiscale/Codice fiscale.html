@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="Codex/CodexFiscalis.js"></script>
+</head>
+<body>
+
+        <h2>Calcola il codice fiscale</h2>
+    <form>
+        <label for="cognome">Cognome</label><br>
+        <input type="text" id="cognome" name="cognome"><br>
+        <label for="nome">Nome</label><br>
+        <input type="text" id="nome" name="nome"><br>
+        <label for="sesso">Sesso (M di default)</label><br>
+        <input type="radio" id="sesso" name="sesso" value="M">M
+        <input type="radio" id="sesso" name="sesso" value="F">F<br>
+        <label for="comun">Comune di nascita (il codice belfiore)</label><br>
+        <input type="text" id="comun" name="comun"><br><br>
+        <label for="datanascita">Data di nascita</label><br>
+        <input type="date" id="datanascita" name="datanascita"><br><br>
+        <button type="button" onclick="codiceFiscale()">Calcola</button><br>
+    </form>
+        <p id="codice">Immetti i dati e il codice apparirà al posto di questa scritta</p>
+</body>
+</html>
