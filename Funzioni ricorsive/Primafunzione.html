@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+<script>
+    function posizioneMinimo(v, inizio, fine){
+        let minimo = v[inizio]
+        for (let i = inizio +1; i <=fine; i++){
+            if (minimo > v[i]){
+                minimo = v[i];
+                pos = i;
+            }
+        }
+    }
+
+    function posizioneMinimo(v, inizio, fine){
+        if (inizio === fine)
+            return inizio;
+        else {
+            if (v[inizio] < v[posizioneMinimo(v,inizio + 1, fine)])
+                return inizio;
+            else
+                return posizioneMinimo(v, inizio +1, fine)
+        }
+
+    }
+
+    function selectionSort(v, inizio, fine){
+        let posMinimo = 0
+        if (inizio === fine)
+            return;
+        else {
+            posMinimo = posizioneMinimo(v, inizio, fine);
+            scambia(v, inizio, posizioneMinimo);
+            selectionSort(v, inizio + 1, fine);
+        }
+    }
+</script>
+</body>
