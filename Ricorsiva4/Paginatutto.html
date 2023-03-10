@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            let unita = ["zero","uno","due","tre","quattro","cinque","sei","sette","otto","nove"];
+            let piccoli = ["dieci","undici","dodici","tredici","quattordici","quindici","sedici","diciassette","diciotto","diciannove"];
+            let decine =["venti","trenta","quaranta","cinquanta","sessanta","settanta","ottanta","novanta","cento"];
+            let migliaia =["mila"];
+            let pos, n;
+            let numero = document.getElementById("numero").value;
+            function numeri(numero){
+                let numero = String(numero)
+                .split('')
+                .map(Number);
+            }
+            function parola(pos, n){
+                if(numero === 0){
+                    document.getElementById("risultato").innerHTML = unita[0];
+                }
+                else if (numero.lenght<2){
+
+                }
+
+            }
+        </script>
+    </head>
+
+    <body>
+        <label for="numero">Inserisci il numero</label><br>
+        <input type="number" id="numero" name="numero">
+        <p id ="risultato">...</p>
+        <button type="button">Calcola</button>
+    </body>
+</html>
