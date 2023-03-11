@@ -2,25 +2,45 @@
 <html>
     <head>
         <script>
-            let unita = ["zero","uno","due","tre","quattro","cinque","sei","sette","otto","nove"];
+            let unita = ["","uno","due","tre","quattro","cinque","sei","sette","otto","nove"];
             let piccoli = ["dieci","undici","dodici","tredici","quattordici","quindici","sedici","diciassette","diciotto","diciannove"];
-            let decine =["venti","trenta","quaranta","cinquanta","sessanta","settanta","ottanta","novanta","cento"];
-            let migliaia =["mila"];
-            let pos, n;
-            let numero = document.getElementById("numero").value;
+            let decine =["", "", "venti","trenta","quaranta","cinquanta","sessanta","settanta","ottanta","novanta"];
+            let cento = "cento";
+            let mila = "mila";
             function numeri(numero){
-                let numero = String(numero)
-                .split('')
-                .map(Number);
-            }
-            function parola(pos, n){
-                if(numero === 0){
-                    document.getElementById("risultato").innerHTML = unita[0];
+                numero = String(numero).split('').map(Number);
+                let scritto = "";
+                switch(numero.length) {
+                    case 0:
+                        if (numero[0] == "0")
+                            scritto += "zero";
+                        else 
+                            scritto += unita[numero[0]];
+                        break;
+                    case 1:
+                        if (numero[0] == "1")
+                            scritto += piccoli[numero[0]];
+                        else 
+                            scritto += decine[numero[0]] + unita[numero[1]];
+                        break;
+                    case 2:
+                        if (numero[0] == "1") {
+                            if (numero == "100")
+                                scritto += cento;
+                            if (numero[1] == "1")
+                                scritto += piccoli[2];
+                            else 
+                                scritto += decine[numero[1]] + unita[numero[0]];
+                        }
+                        else {
+                            if (numero[1] == "1")
+                                scritto += unita[numero[0]] + cento + piccoli[numero[2]];
+                            else 
+                                scritto += unita[numero[0]] + cento + decine[numero[1]] + unita[numero[2]];
+                        }
+                        break;
                 }
-                else if (numero.lenght<2){
-
-                }
-
+                return scritto;
             }
         </script>
     </head>
@@ -28,7 +48,7 @@
     <body>
         <label for="numero">Inserisci il numero</label><br>
         <input type="number" id="numero" name="numero">
-        <p id ="risultato">...</p>
-        <button type="button">Calcola</button>
+        <p id="scritto">...</p>
+        <button type="button" onClick="document.getElementById('scritto').innerHTML = numeri(document.getElementById('numero').value)">Calcola</button>
     </body>
 </html>
